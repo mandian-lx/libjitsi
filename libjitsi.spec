@@ -43,7 +43,7 @@ BuildRequires:	mvn(com.googlecode.json-simple:json-simple)
 BuildRequires:	mvn(junit:junit)
 BuildRequires:	mvn(net.java.dev.jna:jna)
 BuildRequires:	mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:	mvn(org.bouncycastle:bcpkix-jdk15on
+BuildRequires:	mvn(org.bouncycastle:bcpkix-jdk15on)
 BuildRequires:	mvn(org.bouncycastle:bcprov-jdk15on)
 BuildRequires:	mvn(org.jitsi:bccontrib)
 BuildRequires:	mvn(org.jitsi:fmj)
