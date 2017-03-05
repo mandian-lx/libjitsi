@@ -1,0 +1,21 @@
+--- libjitsi.orig/build.xml.maven
++++ libjitsi/build.xml
+@@ -26,12 +26,12 @@
+   <property name="native.libs" value="lib/native"/>
+   <property environment="system"/>
+      
+-  <maven-artifact:dependencies pathId="compile.class.path" useScope="compile">
+-    <pom file="pom.xml" />
+-  </maven-artifact:dependencies>
+-  <maven-artifact:dependencies pathId="mvn.test.class.path" useScope="test">
+-    <pom file="pom.xml" />
+-  </maven-artifact:dependencies>
++  <path id="compile.class.path">
++    <fileset dir="/usr/share/java" includes="*.jar" />
++  </path>
++  <path id="mvn.test.class.path">
++    <fileset dir="/usr/share/java" includes="*.jar" />
++  </path>
+   <path id="test.class.path">
+     <path refid="mvn.test.class.path" />
+     <pathelement location="${dest}" />

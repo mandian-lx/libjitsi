@@ -1,0 +1,21 @@
+--- libjitsi/src/native/build.xml.native_portaudio
++++ libjitsi/src/native/build.xml
+@@ -499,7 +499,7 @@
+       <compilerarg value="-D_JNI_IMPLEMENTATION_" />
+       <compilerarg value="-fPIC" />
+       <compilerarg value="-I${portaudio}/include" />
+-      <compilerarg value="-I${speex}/include" />
++      <compilerarg value="-I/usr/include/speex" />
+       <compilerarg value="-I${system.JAVA_HOME}/include" unless="is.running.macos" />
+       <compilerarg value="-O2" />
+       <compilerarg value="-std=c99" />
+--- libjitsi/src/native/portaudio/AudioQualityImprovement.h.portaudio
++++ libjitsi/src/native/portaudio/AudioQualityImprovement.h
+@@ -30,6 +30,7 @@
+ #else /* #ifndef AUDIO_QUALITY_IMPROVEMENT_IMPLEMENTATION */
+ 
+ #include "Mutex.h"
++#define HAVE_STDINT_H
+ #include <speex/speex_echo.h>
+ #include <speex/speex_preprocess.h>
+ #include <speex/speex_resampler.h>

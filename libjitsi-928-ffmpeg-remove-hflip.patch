@@ -1,0 +1,34 @@
+Adapted from libjitsi/resources/install/debian/patches/remove-hflip
+
+Description: Removes hflip, filters internal api availbale in ffmpeg but not in libav
+--- libjitsi/src/org/jitsi/impl/neomedia/MediaServiceImpl.java.hflip
++++ libjitsi/src/org/jitsi/impl/neomedia/MediaServiceImpl.java
+@@ -1159,7 +1159,7 @@
+                                 locator.getProtocol()))
+                             codecs = new Codec[] { scaler };
+                         else
+-                            codecs = new Codec[] { new HFlip(), scaler };
++                            codecs = new Codec[] { /*new HFlip(),*/ scaler };
+ 
+                         trackControl.setCodecChain(codecs);
+                         break;
+--- libjitsi/src/org/jitsi/impl/neomedia/device/VideoMediaDeviceSession.java.hflip
++++ libjitsi/src/org/jitsi/impl/neomedia/device/VideoMediaDeviceSession.java
+@@ -288,7 +288,7 @@
+                         trackControl.setCodecChain(
+                                 hflip
+                                     ? new Codec[]
+-                                            { new HFlip(), new SwScale() }
++                                            { /* new HFlip(), */ new SwScale() }
+                                     : new Codec[]
+                                             { new SwScale() });
+                         break;
+@@ -523,7 +523,7 @@
+                             {
+                                 controllerUpdateForCreateLocalVisualComponent(
+                                     ev,
+-                                    hflip);
++                                    false);
+                             }
+                         });
+                     localPlayer.configure();

@@ -1,0 +1,18 @@
+--- libjitsi/src/native/build.xml.native_portaudio_with_jack
++++ libjitsi/src/native/build.xml
+@@ -499,6 +499,7 @@
+       <compilerarg value="-fPIC" />
+       <compilerarg value="-I${portaudio}/include" />
+       <compilerarg value="-I/usr/include/speex" />
++      <compilerarg value="-I/usr/include/jack" />
+       <compilerarg value="-I${system.JAVA_HOME}/include" unless="is.running.macos" />
+       <compilerarg value="-O2" />
+       <compilerarg value="-std=c99" />
+@@ -525,6 +526,7 @@
+       <linkerarg value="-lspeexdsp" location="end" if="is.speex.dynamic.set"/>
+       <linkerarg value="-lrt" location="end" if="is.running.linux" />
+       <linkerarg value="-lasound" location="end" if="is.running.linux" />
++      <linkerarg value="-ljack" location="end" if="is.running.linux" />
+       <linkerarg value="-lm" location="end" if="is.running.linux" />
+       <linkerarg value="-lpthread" location="end" if="is.running.linux" />
+ 

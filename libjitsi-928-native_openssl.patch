@@ -1,0 +1,48 @@
+--- libjitsi/src/native/openssl/SRTPCipherCTROpenSSL.c.native_openssl
++++ libjitsi/src/native/openssl/SRTPCipherCTROpenSSL.c
+@@ -29,9 +29,9 @@
+ Java_org_jitsi_impl_neomedia_transform_srtp_SRTPCipherCTROpenSSL_AES128CTR_1CTX_1create
+   (JNIEnv *env, jclass clazz)
+ {
+-    EVP_CIPHER_CTX *ctx = malloc(sizeof(EVP_CIPHER_CTX));
+-    if (ctx)
+-        EVP_CIPHER_CTX_init(ctx);
++    EVP_CIPHER_CTX *ctx;
++
++    ctx = EVP_CIPHER_CTX_new();
+ 
+     return (jlong) (intptr_t) ctx;
+ }
+@@ -47,7 +47,7 @@
+ {
+     if (ctx) {
+         EVP_CIPHER_CTX *ctx_ = (EVP_CIPHER_CTX *) (intptr_t) ctx;
+-        EVP_CIPHER_CTX_cleanup(ctx_);
++        EVP_CIPHER_CTX_free(ctx_);
+         free(ctx_);
+     }
+ }
+--- libjitsi/src/native/openssl/HMAC.c.native_openssl
++++ libjitsi/src/native/openssl/HMAC.c
+@@ -54,10 +54,9 @@
+ Java_org_jitsi_impl_neomedia_transform_srtp_OpenSSLHMAC_HMAC_1CTX_1create
+     (JNIEnv *env, jclass clazz)
+ {
+-    HMAC_CTX *ctx = malloc(sizeof(HMAC_CTX));
++    HMAC_CTX *ctx;
++    ctx = HMAC_CTX_new();
+ 
+-    if (ctx)
+-        HMAC_CTX_init(ctx);
+     return (jlong) (intptr_t) ctx;
+ }
+ 
+@@ -72,7 +71,7 @@
+ {
+     HMAC_CTX *ctx_ = (HMAC_CTX *) (intptr_t) ctx;
+ 
+-    HMAC_CTX_cleanup(ctx_);
++    HMAC_CTX_free(ctx_);
+     free(ctx_);
+ }
+ 

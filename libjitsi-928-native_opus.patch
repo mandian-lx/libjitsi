@@ -1,0 +1,21 @@
+--- libjitsi/src/native/build.xml.native_opus
++++ libjitsi/src/native/build.xml
+@@ -695,6 +695,7 @@
+             <compilerarg value="-I${opus}/include" unless="is.running.unix"/>
+             <compilerarg value="-I/usr/include/opus" if="is.running.unix"/>
+             <compilerarg value="-D_JNI_IMPLEMENTATION_" />
++            <compilerarg value="-D_FORTIFY_SOURCE=2" if="is.running.linux"/>
+ 
+             <linkerarg value="-Wl,-z,relro" if="is.running.unix"/>
+             <linkerarg value="-L${opus}/.libs" unless="is.running.linux"/>
+--- libjitsi/src/native/opus/org_jitsi_impl_neomedia_codec_audio_opus_Opus.c.native_opus
++++ libjitsi/src/native/opus/org_jitsi_impl_neomedia_codec_audio_opus_Opus.c
+@@ -17,7 +17,7 @@
+ #include "org_jitsi_impl_neomedia_codec_audio_opus_Opus.h"
+ 
+ #include <stdint.h>
+-#include <opus.h>
++#include <opus/opus.h>
+ 
+ JNIEXPORT jint JNICALL
+ Java_org_jitsi_impl_neomedia_codec_audio_opus_Opus_decode

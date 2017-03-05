@@ -1,0 +1,15 @@
+--- libjitsi/src/native/build.xml.native_sctp
++++ libjitsi/src/native/build.xml
+@@ -1335,10 +1335,10 @@
+             <linkerarg value="-m64" if="cross_64" />
+ 
+             <linkerarg value="-Wl,-z,relro" if="is.running.linux"/>
+-            <linkerarg value="-Wl,-Bstatic" location="end" />
+-            <linkerarg value="-lusrsctp" location="end" />
++            <!--linkerarg value="-Wl,-Bstatic" location="end" /-->
+             <linkerarg value="-Wl,-Bdynamic" location="end" />
+             <linkerarg value="-lpthread" location="end" />
++            <linkerarg value="-lusrsctp" location="end" />
+             <linkerarg value="-L${usrsctp}/usrsctplib/.libs" />
+ 
+             <fileset dir="${src}/native/sctp" includes="org_jitsi_sctp4j_Sctp.c"/>

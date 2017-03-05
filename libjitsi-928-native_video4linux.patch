@@ -1,0 +1,11 @@
+--- libjitsi-592/src/native/build.xml.native_vl4
++++ libjitsi-592/src/native/build.xml
+@@ -936,7 +941,7 @@
+   <target name="video4linux2" description="Build jnvideo4linux2 shared library" if="is.running.unix"
+     depends="init-native">
+     <cc outtype="shared" name="gcc" outfile="${native_install_dir}/jnvideo4linux2" objdir="${obj}">
+-      <compilerarg value="-std=c99" />
++      <compilerarg value="-std=gnu99" />
+       <compilerarg value="-Wall" />
+       <compilerarg value="-O2" />
+       <compilerarg value="-I${system.JAVA_HOME}/include" />

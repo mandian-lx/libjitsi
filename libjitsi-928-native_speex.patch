@@ -1,0 +1,17 @@
+--- libjitsi/src/native/build.xml.native_speex
++++ libjitsi/src/native/build.xml
+@@ -612,12 +612,12 @@
+     <cc outtype="shared" name="gcc" outfile="${native_install_dir}/jnspeex" objdir="${obj}">
+       <!-- common compiler flags -->
+       <compilerarg value="-D_JNI_IMPLEMENTATION_" />
+-      <compilerarg value="-I${speex}/include" />
++      <compilerarg value="-I/usr/include/speex" />
+       <compilerarg value="-O2" />
+       <compilerarg value="-std=c99" />
+       <compilerarg value="-Wall" />
+ 
+-      <linkerarg value="-L${speex}/libspeex/.libs" />
++      <compilerarg value="-D_FORTIFY_SOURCE=2" if="is.running.linux"/>
+ 
+       <!-- Linux specific flags -->
+       <compilerarg value="-m32" if="cross_32" unless="is.running.macos" />

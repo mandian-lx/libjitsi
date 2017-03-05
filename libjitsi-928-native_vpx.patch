@@ -1,0 +1,23 @@
+--- libjitsi/src/native/build.xml.native_vpx
++++ libjitsi/src/native/build.xml
+@@ -824,7 +824,7 @@
+             <compilerarg value="-fPIC"/>
+             <compilerarg value="-O2" />
+             <compilerarg value="-D_JNI_IMPLEMENTATION_" />
+-
++            <compilerarg value="-D_FORTIFY_SOURCE=2" if="is.running.linux"/>
+             <!-- java includes -->
+             <compilerarg value="-I${system.JAVA_HOME}/include" unless="is.running.macos" />
+             <compilerarg value="-I${system.JAVA_HOME}/include/linux" if="is.running.linux" />
+@@ -878,9 +878,9 @@
+ 
+             <!-- Linux -->
+             <linkerarg value="-L${libvpx}" if="is.running.linux"/>
+-            <linkerarg value="-Wl,-Bstatic" location="end" if="is.running.linux"/>
+-            <linkerarg value="-lvpx" location="end" if="is.running.linux"/>
++            <!--linkerarg value="-Wl,-Bstatic" location="end" if="is.running.linux"/-->
+             <linkerarg value="-Wl,-Bdynamic" location="end" if="is.running.linux"/>
++            <linkerarg value="-lvpx" location="end" if="is.running.linux"/>
+             <linkerarg value="-lstdc++" location="end" if="is.running.linux"/>
+ 
+             <!-- Input files -->
