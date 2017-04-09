@@ -111,7 +111,7 @@ Requires:	%{_lib}pulseaudio0
 #   sctp (jnsctp)
 Requires:	%{_lib}usrsctp1
 #   jnopenssl
-Requires:	%{_lib}crypto1.1
+Requires:	%{_lib}crypto1.0.0
 
 %description
 %{oname} is an advanced Java media library for secure real-time audio/video
