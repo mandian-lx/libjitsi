@@ -287,6 +287,9 @@ popd
 %ant jnopenssl
 %ant sctp -Dusrsctp=""
 
+# remove history.xml
+find lib/native/ -name history.xml -delete
+
 # java
 %mvn_build -- -Dproject.build.sourceEncoding=UTF-8
 
